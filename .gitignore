@@ -1,6 +1,8 @@
 build/
 install/
 log/
-.vscode/
+src/dogbot_description/
+src/esp32_bridge/
+src/quadruped_feedback/
 __pycache__/
 *.pyc
