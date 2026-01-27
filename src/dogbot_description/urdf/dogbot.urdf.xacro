@@ -1,0 +1,322 @@
+<?xml version="1.0"?>
+<robot name="dogbot" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <material name="gray_thigh">
+    <color rgba="0.5 0.5 0.5 1.0"/> 
+  </material>
+  <material name="black_shin">
+    <color rgba="0.1 0.1 0.1 1.0"/> 
+  </material>
+  <material name="base_gray">
+    <color rgba="0.6 0.6 0.6 1.0"/> 
+  </material>
+
+  <link name="base_link">
+    <visual>
+      <geometry>
+        <box size="0.2 0.12 0.06"/>
+      </geometry>
+      <material name="base_gray"/>
+    </visual>
+    <collision>
+      <geometry>
+        <box size="0.2 0.12 0.06"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="1.15"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/> 
+      <inertia ixx="0.0016" ixy="0.0" ixz="0.0" iyy="0.004" izz="0.005" iyz="0.0" /> 
+    </inertial>
+  </link>
+
+  <link name="front_left_thigh">
+    <visual>
+      <geometry><box size="0.03 0.03 0.07"/></geometry>
+      <origin xyz="0 0 -0.035" rpy="0 0 0"/>
+      <material name="gray_thigh"/>
+    </visual>
+    <collision>
+      <geometry><box size="0.03 0.03 0.07"/></geometry>
+      <origin xyz="0 0 -0.035" rpy="0 0 0"/>
+    </collision>
+    <inertial>
+      <mass value="0.15"/>
+      <origin xyz="0 0 -0.035" rpy="0 0 0"/> 
+      <inertia ixx="0.000030" ixy="0.0" ixz="0.0" iyy="0.000030" izz="0.000006" iyz="0.0" /> 
+    </inertial>
+  </link>
+  <joint name="front_left_hip" type="revolute">
+    <parent link="base_link"/>
+    <child link="front_left_thigh"/>
+    <origin xyz="0.08 0.06 0" rpy="0 0.5236 0"/>
+    <axis xyz="0 1 0"/>
+    <limit lower="-3.14159" upper="3.14159" effort="2.2" velocity="0.5"/>
+  </joint>
+
+  <link name="front_left_shin">
+    <visual>
+      <geometry><box size="0.03 0.03 0.07"/></geometry>
+      <origin xyz="0 0 -0.035" rpy="0 0 0"/>
+      <material name="black_shin"/>
+    </visual>
+    <collision>
+      <geometry><box size="0.03 0.03 0.07"/></geometry>
+      <origin xyz="0 0 -0.035" rpy="0 0 0"/>
+    </collision>
+    <inertial>
+      <mass value="0.10"/>
+      <origin xyz="0 0 -0.035" rpy="0 0 0"/> 
+      <inertia ixx="0.000030" ixy="0.0" ixz="0.0" iyy="0.000030" izz="0.000006" iyz="0.0" /> 
+    </inertial>
+  </link>
+  <joint name="front_left_knee" type="revolute">
+    <parent link="front_left_thigh"/>
+    <child link="front_left_shin"/>
+    <origin xyz="0 0 -0.07" rpy="0 -1.0472 0"/>
+    <axis xyz="0 1 0"/>
+    <limit lower="-1.5708" upper="1.5708" effort="1.92" velocity="0.5"/>
+  </joint>
+  <gazebo reference="front_left_shin">
+    <mu1>0.8</mu1> <mu2>0.8</mu2> <material>Gazebo/Black</material>
+    <kp>1000000.0</kp> <kd>1.0</kd>
+  </gazebo>
+  
+  <link name="front_right_thigh">
+    <visual>
+      <geometry><box size="0.03 0.03 0.07"/></geometry>
+      <origin xyz="0 0 -0.035" rpy="0 0 0"/>
+      <material name="gray_thigh"/>
+    </visual>
+    <collision>
+      <geometry><box size="0.03 0.03 0.07"/></geometry>
+      <origin xyz="0 0 -0.035" rpy="0 0 0"/>
+    </collision>
+    <inertial>
+      <mass value="0.15"/>
+      <origin xyz="0 0 -0.035" rpy="0 0 0"/> 
+      <inertia ixx="0.000030" ixy="0.0" ixz="0.0" iyy="0.000030" izz="0.000006" iyz="0.0" /> 
+    </inertial>
+  </link>
+  <joint name="front_right_hip" type="revolute">
+    <parent link="base_link"/>
+    <child link="front_right_thigh"/>
+    <origin xyz="0.08 -0.06 0" rpy="0 0.5236 0"/>
+    <axis xyz="0 1 0"/>
+    <limit lower="-3.14159" upper="3.14159" effort="2.2" velocity="0.5"/>
+  </joint>
+
+  <link name="front_right_shin">
+    <visual>
+      <geometry><box size="0.03 0.03 0.07"/></geometry>
+      <origin xyz="0 0 -0.035" rpy="0 0 0"/>
+      <material name="black_shin"/>
+    </visual>
+    <collision>
+      <geometry><box size="0.03 0.03 0.07"/></geometry>
+      <origin xyz="0 0 -0.035" rpy="0 0 0"/>
+    </collision>
+    <inertial>
+      <mass value="0.10"/>
+      <origin xyz="0 0 -0.035" rpy="0 0 0"/> 
+      <inertia ixx="0.000030" ixy="0.0" ixz="0.0" iyy="0.000030" izz="0.000006" iyz="0.0" /> 
+    </inertial>
+  </link>
+  <joint name="front_right_knee" type="revolute">
+    <parent link="front_right_thigh"/>
+    <child link="front_right_shin"/>
+    <origin xyz="0 0 -0.07" rpy="0 -1.0472 0"/>
+    <axis xyz="0 1 0"/>
+    <limit lower="-1.5708" upper="1.5708" effort="1.92" velocity="0.5"/>
+  </joint>
+  <gazebo reference="front_right_shin">
+    <mu1>0.8</mu1> <mu2>0.8</mu2> <material>Gazebo/Black</material>
+    <kp>1000000.0</kp> <kd>1.0</kd>
+  </gazebo>
+  
+  <link name="rear_left_thigh">
+    <visual>
+      <geometry><box size="0.03 0.03 0.07"/></geometry>
+      <origin xyz="0 0 -0.035" rpy="0 0 0"/>
+      <material name="gray_thigh"/>
+    </visual>
+    <collision>
+      <geometry><box size="0.03 0.03 0.07"/></geometry>
+      <origin xyz="0 0 -0.035" rpy="0 0 0"/>
+    </collision>
+    <inertial>
+      <mass value="0.15"/>
+      <origin xyz="0 0 -0.035" rpy="0 0 0"/> 
+      <inertia ixx="0.000030" ixy="0.0" ixz="0.0" iyy="0.000030" izz="0.000006" iyz="0.0" /> 
+    </inertial>
+  </link>
+  <joint name="rear_left_hip" type="revolute">
+    <parent link="base_link"/>
+    <child link="rear_left_thigh"/>
+    <origin xyz="-0.08 0.06 0" rpy="0 0.5236 0"/>
+    <axis xyz="0 1 0"/>
+    <limit lower="-3.14159" upper="3.14159" effort="2.2" velocity="0.5"/>
+  </joint>
+
+  <link name="rear_left_shin">
+    <visual>
+      <geometry><box size="0.03 0.03 0.07"/></geometry>
+      <origin xyz="0 0 -0.035" rpy="0 0 0"/>
+      <material name="black_shin"/>
+    </visual>
+    <collision>
+      <geometry><box size="0.03 0.03 0.07"/></geometry>
+      <origin xyz="0 0 -0.035" rpy="0 0 0"/>
+    </collision>
+    <inertial>
+      <mass value="0.10"/>
+      <origin xyz="0 0 -0.035" rpy="0 0 0"/> 
+      <inertia ixx="0.000030" ixy="0.0" ixz="0.0" iyy="0.000030" izz="0.000006" iyz="0.0" /> 
+    </inertial>
+  </link>
+  <joint name="rear_left_knee" type="revolute">
+    <parent link="rear_left_thigh"/>
+    <child link="rear_left_shin"/>
+    <origin xyz="0 0 -0.07" rpy="0 -1.0472 0"/>
+    <axis xyz="0 1 0"/>
+    <limit lower="-1.5708" upper="1.5708" effort="1.92" velocity="0.5"/>
+  </joint>
+  <gazebo reference="rear_left_shin">
+    <mu1>0.8</mu1> <mu2>0.8</mu2> <material>Gazebo/Black</material>
+    <kp>1000000.0</kp> <kd>1.0</kd>
+  </gazebo>
+  
+  <link name="rear_right_thigh">
+    <visual>
+      <geometry><box size="0.03 0.03 0.07"/></geometry>
+      <origin xyz="0 0 -0.035" rpy="0 0 0"/>
+      <material name="gray_thigh"/>
+    </visual>
+    <collision>
+      <geometry><box size="0.03 0.03 0.07"/></geometry>
+      <origin xyz="0 0 -0.035" rpy="0 0 0"/>
+    </collision>
+    <inertial>
+      <mass value="0.15"/>
+      <origin xyz="0 0 -0.035" rpy="0 0 0"/> 
+      <inertia ixx="0.000030" ixy="0.0" ixz="0.0" iyy="0.000030" izz="0.000006" iyz="0.0" /> 
+    </inertial>
+  </link>
+  <joint name="rear_right_hip" type="revolute">
+    <parent link="base_link"/>
+    <child link="rear_right_thigh"/>
+    <origin xyz="-0.08 -0.06 0" rpy="0 0.5236 0"/>
+    <axis xyz="0 1 0"/>
+    <limit lower="-3.14159" upper="3.14159" effort="2.2" velocity="0.5"/>
+  </joint>
+
+  <link name="rear_right_shin">
+    <visual>
+      <geometry><box size="0.03 0.03 0.07"/></geometry>
+      <origin xyz="0 0 -0.035" rpy="0 0 0"/>
+      <material name="black_shin"/>
+    </visual>
+    <collision>
+      <geometry><box size="0.03 0.03 0.07"/></geometry>
+      <origin xyz="0 0 -0.035" rpy="0 0 0"/>
+    </collision>
+    <inertial>
+      <mass value="0.10"/>
+      <origin xyz="0 0 -0.035" rpy="0 0 0"/> 
+      <inertia ixx="0.000030" ixy="0.0" ixz="0.0" iyy="0.000030" izz="0.000006" iyz="0.0" /> 
+    </inertial>
+  </link>
+  <joint name="rear_right_knee" type="revolute">
+    <parent link="rear_right_thigh"/>
+    <child link="rear_right_shin"/>
+    <origin xyz="0 0 -0.07" rpy="0 -1.0472 0"/>
+    <axis xyz="0 1 0"/>
+    <limit lower="-1.5708" upper="1.5708" effort="1.92" velocity="0.5"/>
+  </joint>
+  <gazebo reference="rear_right_shin">
+    <mu1>0.8</mu1> <mu2>0.8</mu2> <material>Gazebo/Black</material>
+    <kp>1000000.0</kp> <kd>1.0</kd>
+  </gazebo>
+  
+  <ros2_control name="GazeboSystem" type="system">
+    <hardware>
+      <plugin>gz_ros2_control/GazeboSimSystem</plugin>
+    </hardware>
+    
+    <joint name="front_left_hip">
+      <command_interface name="position">
+         <param name="min">-3.14159</param>
+         <param name="max">3.14159</param>
+      </command_interface>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+    </joint>
+    <joint name="front_left_knee">
+      <command_interface name="position">
+         <param name="min">-1.5708</param>
+         <param name="max">1.5708</param>
+      </command_interface>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+    </joint>
+    
+    <joint name="front_right_hip">
+      <command_interface name="position">
+         <param name="min">-3.14159</param>
+         <param name="max">3.14159</param>
+      </command_interface>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+    </joint>
+    <joint name="front_right_knee">
+      <command_interface name="position">
+         <param name="min">-1.5708</param>
+         <param name="max">1.5708</param>
+      </command_interface>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+    </joint>
+
+    <joint name="rear_left_hip">
+      <command_interface name="position">
+         <param name="min">-3.14159</param>
+         <param name="max">3.14159</param>
+      </command_interface>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+    </joint>
+    <joint name="rear_left_knee">
+      <command_interface name="position">
+         <param name="min">-1.5708</param>
+         <param name="max">1.5708</param>
+      </command_interface>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+    </joint>
+    
+    <joint name="rear_right_hip">
+      <command_interface name="position">
+         <param name="min">-3.14159</param>
+         <param name="max">3.14159</param>
+      </command_interface>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+    </joint>
+    <joint name="rear_right_knee">
+      <command_interface name="position">
+         <param name="min">-1.5708</param>
+         <param name="max">1.5708</param>
+      </command_interface>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+    </joint>
+  </ros2_control>
+  
+  
+  <gazebo>
+    <plugin filename="libgz_ros2_control.so" name="gz_ros2_control">
+        <parameters>$(find dogbot_description)/config/dogbot_controllers.yaml</parameters>
+    </plugin>
+  </gazebo>
+  
+</robot>
