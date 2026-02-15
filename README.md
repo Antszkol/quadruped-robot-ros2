@@ -1,4 +1,4 @@
-Quadruped Robot - ROS 2 Control System
+**Quadruped Robot - ROS 2 Control System**
 
 This repository contains the complete control system for a 12-DOF (configured as 8-DOF) quadruped robot, developed as an engineering thesis at the Warsaw University of Technology. The project integrates low-level hardware communication with high-level trajectory planning using ROS 2.
 Hardware Specifications
@@ -11,7 +11,7 @@ Hardware Specifications
 
     Mechanical Structure: 3D-printed ABS body featuring a parallel linkage mechanism for the legs.
 
-Core Packages
+**Core Packages**
 
     quadruped_control (C++): Core logic implementing the Inverse Kinematics (IK) solver and the gait trajectory generator (swing and stance phases).
 
@@ -19,38 +19,38 @@ Core Packages
 
     quadruped_wifireceiver (C++): UDP-based communication bridge for low-latency remote teleoperation.
 
-Getting Started
+**Getting Started**
 
 Since the project is in the prototype phase, nodes are currently launched manually via the terminal.
-1. UDP Receiver (Robot)
+**1. UDP Receiver (Robot)**
 
 Start the network bridge to listen for remote commands:
 Bash
 
 ros2 run quadruped_wifireceiver udp_receiver_node
 
-2. Servo Translator (Robot)
+**2. Servo Translator (Robot)**
 
 Initialize the hardware interface for the ST3215 servos:
 Bash
 
 ros2 run quadruped_servotranslator_cpp servotranslator_node
 
-3. Control Node (Robot)
+**3. Control Node (Robot)**
 
 Launch the main gait engine and IK solver:
 Bash
 
 ros2 run quadruped_control quadruped_control_node
 
-4. Teleop (PC)
+**4. Teleop (PC)**
 
 Run the keyboard controller on your workstation:
 Bash
 
 ros2 run quadruped_teleop teleop_keyboard
 
-Key Algorithms
+**Key Algorithms**
 
     Inverse Kinematics: Analytical solution for a 2-DOF leg geometry.
 
