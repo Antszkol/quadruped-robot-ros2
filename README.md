@@ -59,5 +59,11 @@ ros2 run quadruped_teleop teleop_keyboard
     Current Feedback: Real-time monitoring via register 0x45 for load estimation and admittance control planning.
 
 **UPDATES**  
+
+    **Admittance regulation**
+      
     Admittance regulation described with the formula below:  
+    
     $$F_{ext} = M\ddot{x} + D\dot{x} + Kx$$
+
+    Was implemented in the code, aiming to make the robot react to uneven enviroment by adjusting leg trajectories to keep body on a constant height.
