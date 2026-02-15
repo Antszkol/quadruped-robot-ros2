@@ -60,10 +60,10 @@ ros2 run quadruped_teleop teleop_keyboard
 
 **UPDATES**  
 
-    **Admittance regulation**
+**Admittance regulation**
       
-    Admittance regulation described with the formula below:  
+Admittance regulation described with the formula below:  
     
-    $$F_{ext} = M\ddot{x} + D\dot{x} + Kx$$
+$$F_{ext} = M\ddot{x} + D\dot{x} + Kx$$
 
-    Was implemented in the code, aiming to make the robot react to uneven enviroment by adjusting leg trajectories to keep body on a constant height.
+Was implemented in the code, aiming to make the robot react to uneven enviroment by adjusting leg trajectories to keep body on a constant height.
