@@ -57,3 +57,7 @@ ros2 run quadruped_teleop teleop_keyboard
     Trajectory Generation: Smooth foot trajectory using a parametric sine-wave mapping (smooth_x_ratio) to minimize mechanical vibration.
 
     Current Feedback: Real-time monitoring via register 0x45 for load estimation and admittance control planning.
+
+**UPDATES**
+    Admittance regulation described with the formula below:
+    $$F_{ext} = M\ddot{x} + D\dot{x} + Kx$$
