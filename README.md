@@ -1,6 +1,6 @@
 **Quadruped Robot - ROS 2 Control System**
 
-This repository contains the complete control system for a 12-DOF (configured as 8-DOF) quadruped robot, developed as an engineering thesis at the Warsaw University of Technology. The project integrates low-level hardware communication with high-level trajectory planning using ROS 2.
+This repository contains the complete control system for a 8-DOF quadruped robot, developed as an engineering thesis at the Warsaw University of Technology. The project integrates low-level hardware communication with high-level trajectory planning using ROS 2.
 Hardware Specifications
 
     Master Controller: Raspberry Pi 4 4GB RAM.
@@ -57,3 +57,13 @@ ros2 run quadruped_teleop teleop_keyboard
     Trajectory Generation: Smooth foot trajectory using a parametric sine-wave mapping (smooth_x_ratio) to minimize mechanical vibration.
 
     Current Feedback: Real-time monitoring via register 0x45 for load estimation and admittance control planning.
+
+**UPDATES**  
+
+**Admittance regulation**
+      
+Admittance regulation described with the formula below:  
+    
+$$F_{ext} = M\ddot{x} + D\dot{x} + Kx$$
+
+Was implemented in the code, aiming to make the robot react to uneven enviroment by adjusting leg trajectories to keep body on a constant height.
