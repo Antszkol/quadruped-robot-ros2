@@ -1,6 +1,6 @@
 **Quadruped Robot - ROS 2 Control System**
 
-This repository contains the complete control system for a 12-DOF (configured as 8-DOF) quadruped robot, developed as an engineering thesis at the Warsaw University of Technology. The project integrates low-level hardware communication with high-level trajectory planning using ROS 2.
+This repository contains the complete control system for a 8-DOF quadruped robot, developed as an engineering thesis at the Warsaw University of Technology. The project integrates low-level hardware communication with high-level trajectory planning using ROS 2.
 Hardware Specifications
 
     Master Controller: Raspberry Pi 4 4GB RAM.
